@@ -1,0 +1,36 @@
+{% extends 'base/base.html'%}
+{% load static %}
+
+{%block bread%}
+    <li class="breadcrumb-item "><a href="{% url 'core:home' %}">Home</a></li>
+    <li class="breadcrumb-item active">Clubs</li>
+{%endblock bread%}
+
+{% block content %}
+
+<div class="row">
+    {% for club in clubs %}
+        <div class="col-sm-4">
+            <div class="card border-warning mb-3" style="max-width: 20rem;">
+                {% if club.profile.img %}
+                    <img src="{{club.profile.img.url}}" class="card-img-top img-thumbnail">
+                {%else%}
+                    <img src="{% static 'core/icons/SCP-logo.jpg'%}" class="card-img-top img-thumbnail">
+                {% endif %}
+                <div class="card-header">
+                     <a><h3 class="card-title">{{club.profile.name}}</h3></a>  <!--club.username = slug in profile model
+                                                                                                                                     at recall: club -> clubs -> user, so club = user
+                                                                                                                                  -->
+                </div>
+                <div class="card-body text-warning">
+                    <p class="card-text">{{club.profile.about}}</p>
+
+                    <a  href="{%url 'core:club_details' club.username %}" class="btn btn-primary">More Details</a>
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

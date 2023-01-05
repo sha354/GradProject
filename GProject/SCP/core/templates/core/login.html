@@ -1,0 +1,24 @@
+{% extends 'base/base.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{%block content%}
+
+    <div class="container col-md-9 ">
+        <form method='POST' class="form-group">
+            <h4 class="auth-header">Hello Again!</h4>
+            {% csrf_token%}
+            <div class="form-group">
+                {{form.username | as_crispy_field}}
+                {{form.password | as_crispy_field}}
+            </div>
+            <div class="buttons-w container">
+                <button type="submit" class="btn btn-success ">Login</button> <!-- submit = send request
+                                                                                       automatically go to view function of this page (login_info)
+                                                                                       -->
+            </div>
+        </form>
+        <h6>Are You New? <a href="{% url 'core:sign_up'%}">yes</a></h6>
+    </div>
+
+{%endblock content%}

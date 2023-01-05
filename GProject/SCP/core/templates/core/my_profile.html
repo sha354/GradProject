@@ -1,0 +1,25 @@
+{% extends 'base/base.html'%}
+{% load static %}
+
+
+
+{%block content%}
+<div>
+    {% if user.profile.img %}
+        <img src="{{user.profile.img.url}}" height="100" width="100" class="rounded float-left mr-4">
+    {%else%}
+        <img src="{% static 'core/icons/SCP-logo.jpg'%}" height="100" width="100" class="rounded float-left">
+    {% endif %}
+</div>
+
+<div>
+    <h3>Name: {{user.profile.name}}</h3>  <!--standard recall because no data sent to this page-->
+</div>
+<div>
+    <h5>about me: {{user.profile.about}}</h5>
+</div>
+
+    <div class="mb-4">
+               <a href="{% url 'core:update_profile'%}" class="btn btn-success mt-5">Update Profile</a>
+    </div>
+{%endblock content%}

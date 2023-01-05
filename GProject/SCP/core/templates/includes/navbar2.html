@@ -1,0 +1,14 @@
+
+<!--dropdown-->
+<nav class="navbar navbar-dark bg-warning">
+  <div class="dropdown container">
+      <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Clubs
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          {% for club in clubs %}
+          <a class="dropdown-item " href="{% url 'core:club_details' club.id %}">{{club.name}}</a>
+          {% endfor %}
+      </div>
+  </div>
+</nav>

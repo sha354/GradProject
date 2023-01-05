@@ -1,0 +1,36 @@
+{% extends 'base/base.html'%}
+{% load static %}
+
+
+{%block bread%}
+    <li class="breadcrumb-item "><a href="{% url 'core:home' %}">Home</a></li>
+    <li class="breadcrumb-item "><a href="{% url 'core:clubs_list' %}">Clubs</a></li>
+    <li class="breadcrumb-item active">{{club.name}}</li>
+{%endblock bread%}
+
+{%block content%}
+<div>
+    {% if club.img %}
+        <img src="{{club.img.url}}" class="img-thumbnail" >
+    {%else%}
+            <img src="{% static 'core/icons/SCP-logo.jpg'%}" class=" img-thumbnail " >
+    {% endif %}
+
+</div>
+<div>
+    <h3>{{club.name}}</h3>  <!-- club = profile, direct access -->
+</div>
+<div>
+    <h5>{{club.about}}</h5>
+</div>
+
+<div>
+<form>
+    <input class="btn mt-4 mb-4 bg-success text-light" type="submit" value="Join"> <!-- Dict-request -->
+</form>
+</div>
+
+<div>
+    <h3>Courses:</h3>
+</div>
+{%endblock content%}
