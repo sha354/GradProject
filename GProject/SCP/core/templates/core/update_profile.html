@@ -6,22 +6,24 @@
 
     <div class="container col-md-9 ">
         <form method='POST' class="form-group">
-            <h4 class="auth-header">Edit Personal Data: </h4>
-            {% csrf_token%}
-            <div class="form-group">
-                {{user_form.first_name | as_crispy_field}}
-                {{user_form.last_name | as_crispy_field}}
-            </div>
+          {% csrf_token%}
+
             <h4 class="auth-header">Edit Profile: </h4>
              <div class="form-group">
                 {{profile_form.img | as_crispy_field}}
                 {{profile_form.name | as_crispy_field}}
                 {{profile_form.about | as_crispy_field}}
             </div>
+<br>
+
+            <h4 class="auth-header">Edit Personal Data: </h4>
+            <div class="form-group">
+                {{user_form.first_name | as_crispy_field}}
+                {{user_form.last_name | as_crispy_field}}
+            </div>
             <div class="buttons-w container">
                 <button type="submit" class="btn btn-success">Update</button> <!-- submit = send request
-                                                                                       automatically go to view function of this page (update_profile)
-                                                                                       -->
+                                                                                   automatically go to view function of this page (update_profile)-->
             </div>
         </form>
     </div>
